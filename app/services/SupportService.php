@@ -3,17 +3,16 @@ namespace App\Services;
 
 use App\DTO\createSupportDTO;
 use App\DTO\UpdateSupportDTO;
+use App\Models\Support;
+use App\Repositories\SupportRepositoryInterface;
 use GuzzleHttp\Promise\Create;
 use stdClass;
 
 class SupportService
 {
-    protected $repository;
-
-    public function __construct()
-    {
-
-    }
+    public function __construct(
+        protected SupportRepositoryInterface $repository
+    ){}
 
 
     public function getAll(string $filter = null): array

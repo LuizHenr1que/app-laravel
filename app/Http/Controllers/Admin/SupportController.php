@@ -19,7 +19,7 @@ class SupportController extends Controller
     public function index(Request $request)
     {
         $supports = $this->service->getAll($request->filter);
-
+dd($supports);
         return view('admin/supports/index', compact('supports'));
     }
 
@@ -60,7 +60,7 @@ class SupportController extends Controller
         $support = $this->service->update(
             UpdateSupportDTO::makeFromRequest($request),
         );
-        
+
         if (!$support) {
             return back();
         };
