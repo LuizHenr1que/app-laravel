@@ -4,6 +4,7 @@ namespace App\Services;
 use App\DTO\createSupportDTO;
 use App\DTO\UpdateSupportDTO;
 use App\Models\Support;
+use App\Repositories\PaginationInterface;
 use App\Repositories\SupportRepositoryInterface;
 use GuzzleHttp\Promise\Create;
 use stdClass;
@@ -18,7 +19,7 @@ class SupportService
         int $page = 1,
         int $totalPerPage = 15,
         string $filter = null
-    ){
+    ): PaginationInterface {
         return $this->repository->paginate(
             page: $page,
             totalPerPage: $totalPerPage,
