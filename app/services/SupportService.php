@@ -1,12 +1,10 @@
 <?php
 namespace App\Services;
 
-use App\DTO\createSupportDTO;
-use App\DTO\UpdateSupportDTO;
-use App\Models\Support;
+use App\DTO\Supports\createSupportDTO;
+use App\DTO\Supports\UpdateSupportDTO;
 use App\Repositories\PaginationInterface;
 use App\Repositories\SupportRepositoryInterface;
-use GuzzleHttp\Promise\Create;
 use stdClass;
 
 class SupportService
