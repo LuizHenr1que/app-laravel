@@ -11,11 +11,10 @@
 <body>
     <section class="container px-4 max-auto ">
 
-        <header>
-            @yield('header')
-        </header>
+        @yield('header')
 
-        <div class="content">
+        <div >
+
             @yield('content')
         </div>
 
