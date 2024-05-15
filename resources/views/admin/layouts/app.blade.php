@@ -9,18 +9,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <section class="container px-4 max-auto ">
+    <section class="container px-4 max-auto py-4">
 
         @yield('header')
 
         <div >
-
+            <x-messages/>
             @yield('content')
         </div>
 
-        <footer>
-            #default footer
-        </footer>
 
     </section>
 </body>

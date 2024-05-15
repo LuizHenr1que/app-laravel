@@ -20,7 +20,7 @@ class SupportController extends Controller
     {
         $supports = $this->service->paginate(
             page: $request->get('page', 1),
-            totalPerPage: $request->get('per_page', 1),
+            totalPerPage: $request->get('per_page', 6),
             filter: $request->filter,
         );
 
@@ -31,9 +31,13 @@ class SupportController extends Controller
 
     public function show(string $id)
     {
+        // Support::find($id)
+        // Support::where('id', $id)->first();
+        // Support::where('id', '!=', $id)->first();
         if (!$support = $this->service->findOne($id)) {
             return back();
         }
+
         return view('admin/supports/show', compact('support'));
     }
 
@@ -48,15 +52,17 @@ class SupportController extends Controller
             CreateSupportDTO::makeFromRequest($request)
         );
 
-
-        return redirect()->route('supports.index');
+        return redirect()
+                ->route('supports.index')
+                ->with('message', 'Cadastrado com sucesso!');
     }
 
     public function edit(string $id)
     {
+        // if (!$support = $support->where('id', $id)->first()) {
         if (!$support = $this->service->findOne($id)) {
             return back();
-        };
+        }
 
         return view('admin/supports.edit', compact('support'));
     }
@@ -69,15 +75,19 @@ class SupportController extends Controller
 
         if (!$support) {
             return back();
-        };
+        }
 
-        return redirect()-> route('supports.index');
+        return redirect()
+                ->route('supports.index')
+                ->with('message', 'Atualizado com sucesso!');
     }
 
     public function destroy(string $id)
     {
         $this->service->delete($id);
 
-        return redirect()->route('supports.index');
+        return redirect()
+                ->route('supports.index')
+                ->with('message', 'Deletado com sucesso!');
     }
-};
+}
